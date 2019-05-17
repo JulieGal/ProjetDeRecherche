@@ -283,6 +283,6 @@ Nous avons ensuite tenté de détecter un corps humain grâce à OpenPose, ceci 
 
 Un but secondaire aurait été d’optimiser le tracking en suivant une partie du corps également, de sorte que si un visage est de profil et n’est plus détecté avec notre méthode, le robot n’est pas perdu et sait que la personne à suivre est toujours là, bien qu’on ne capte plus son visage.
 
-![picture](Assets/Squelette.jpg)
+![picture](Assets/Squelette2.jpg)
 
 
