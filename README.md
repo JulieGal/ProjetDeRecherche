@@ -90,8 +90,6 @@ Ce modèle a cependant des limites:
 
 Une seconde méthode que nous avons essayée fut de calculer la moyenne des profondeurs au sein du rectangle entourant le visage. On obtient une valeur de profondeur proche de la profondeur obtenue en prenant le centre du rectangle.
 
-![picture](Assets/schema%20angle%20(1).png)
-
 ```python
 %Calcul de la moyenne des profondeurs des pixels delimites par le rectangle:
 somme=0
@@ -210,13 +208,73 @@ if __name__ == '__main__':
 		rospy.loginfo("GoForward node terminated.")
 ```
 
+### Tentative de suivi angulaire
+
+![picture](Assets/schema%20angle%20(1).png)
+
+Nous avons également cherché à modifier la rotation du robot pour qu’il reste toujours fixé sur l’être humain soit au centre du champ de la caméra. Cependant, le programme ne fonctionnait pas lorsque nous l’avons testé, nous n’avons pas eu le temps de le debugger. Voici les grandes lignes du code si vous avez l’occasion d’exploiter l’idée.
+
+``` python
+if (x1<210 and x2<210):
+	d_pixel_1=(320-x1)*(120/face[2])
+	theta1=m.atan(d_pixel_1/depth_center)
+	move_cmd.angular.z=(-theta1)
+	move_cmd.linear.x=0
+	self.cmd_vel.publish(move_cmd)
+			
+else if(x1>425 and x2>425):
+	d_pixel_2=(x1-320)*(120/face[2])
+	theta2=m.atan(d_pixel_2/depth_center)
+	move_cmd.angular.z=(theta2)
+	move_cmd.linear.x=0
+	self.cmd_vel.publish(move_cmd)
+		
+else:
+	# as long as you haven't ctrl + c keeping doing...
+	distance = depth_center*0.001
+	print(depth_center)
+	move_cmd.angular.z=0
+	vitesse = 0.1 #CE PARAMETRE EST MODIFIABLE
+	distance_voulue = 0.8
+	bil=True
+	bul=True
+	difdist=distance_voulue - distance
+	t0 = rospy.Time.now().to_sec()
+	while not rospy.is_shutdown() and  (difdist < 0) and (bil==True):
+		bil=True
+		t1=rospy.Time.now().to_sec()
+		distance=distance-abs(vitesse)*(t1-t0)
+		difdist=distance_voulue - distance
+		print(distance)
+		move_cmd.linear.x = vitesse
+		# publish the velocity
+		self.cmd_vel.publish(move_cmd)
+		# wait for 0.1 seconds (10 HZ) and publish again
+		t0=t1
+		r.sleep()
+		bul=False
+			
+	while not rospy.is_shutdown() and  (difdist > 0) and (bul==True):
+		t1=rospy.Time.now().to_sec()
+		distance=distance+abs(vitesse)*(t1-t0)
+		difdist=distance_voulue - distance
+		print(difdist)
+		move_cmd_rec.linear.x = -vitesse
+		self.cmd_vel.publish(move_cmd_rec)
+		t0=t1
+		r.sleep()
+		bil=False		
+```
+
 
 ## 6) Détection du visage humain avec OpenPose
+
+La suite de notre recherche s’est portée sur l’utilisation du module openpose pour visualiser le squelette humain sur les données caméra. L’avantage de cette méthode est la précision de la prise d’information sur l’être humain face à la caméra. Cependant, le temps de calcul est important et nécessite de prendre en compte des temps d’attente compris entre 5 et 10 secondes pour le traitement d’une unique image.
 
 ![picture](Assets/OpenPose%20Face%20Detection.jpg)
 
 ## 7) Détection du squelette humain grâce à OpenPose
 
-
+![picture](Assets/Squelette.jpg)
 
 
