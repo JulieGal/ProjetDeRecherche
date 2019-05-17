@@ -29,7 +29,7 @@ roslaunch turtlebot_bringup minimal.launch
 
 Dans un second terminal, on lance le programme python de la manière suivante:
 ```
-Python nomDuProgramme.py
+python nomDuProgramme.py
 ```
 
 ## 2) Détection d'images à partir de la librealsense2
