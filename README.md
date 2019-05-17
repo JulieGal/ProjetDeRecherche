@@ -54,7 +54,7 @@ config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
 profile=pipeline.start(config)
 ```
 
-![Optional Text](../JulieGal/ProjetDeRecherche/Assets/Rapport_stream_cam (1).png)
+![picture](../ProjetDeRecherche/Assets/Rapport_stream_cam (1).png)
 
 ## 3) Détection du visage grâce à OpenCV
 
