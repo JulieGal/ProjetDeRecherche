@@ -62,7 +62,7 @@ Le premier modèle implémenté fut basé sur une solution OpenCV de détection 
 
 A l’aide de la bibliothèque OpenCV, nous détectons les visages  des personnes devant la caméra  et  calculons  la  distance  entre  la  caméra  et  le  visage.  Lorsque  la  distance  est supérieure à la distance de consigne, le robot avance pour arriver à la distance de consigne. Si  la  distance  est  inférieure,  le  robot  recule.  On  souhaite  que  le  robot  effectue  un  tracking d’une personne humaine.
 
---- Image de Samah et Arthur avec visages détectés---
+![picture](Assets/DetectedFace.jpg)
 
 ### Méthode 1:
 
