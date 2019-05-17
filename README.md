@@ -90,6 +90,8 @@ Ce modèle a cependant des limites:
 
 Une seconde méthode que nous avons essayée fut de calculer la moyenne des profondeurs au sein du rectangle entourant le visage. On obtient une valeur de profondeur proche de la profondeur obtenue en prenant le centre du rectangle.
 
+![picture](Assets/schema%20angle%20(1).jpg)
+
 ```python
 %Calcul de la moyenne des profondeurs des pixels delimites par le rectangle:
 somme=0
@@ -160,7 +162,7 @@ difdist=distance_voulue - distance
 
 ## 5) Déplacement du robot en fonction de la distance à un visage
 
---- Schema distance ---
+![picture](Assets/machine%20(1).jpg)
 
 Nous avons mis la condition sur la différence de distance pour que le robot puisse avancer ou reculer en fonction du signe. Si la distance entre la position du robot et la position qu’on souhaite est positive c’est que le robot doit avancer vers la personne, sinon, il recule.
 
@@ -210,6 +212,9 @@ if __name__ == '__main__':
 
 
 ## 6) Détection du visage humain avec OpenPose
+
+![picture](Assets/OpenPose%20Face%20Detection.jpg)
+
 ## 7) Détection du squelette humain grâce à OpenPose
 
 
