@@ -273,7 +273,15 @@ La suite de notre recherche s’est portée sur l’utilisation du module openpo
 
 ![picture](Assets/OpenPose%20Face%20Detection.jpg)
 
+Nous avons donc commencé à réfléchir sur l’exploitation de cette méthode mais celle-ci serait plus intéressante si elle était implémentée sur un CPU plus puissant. En communiquant par réseau avec le robot, l’utilisation d’un CPU permet une plus grande puissance de calcul.
+
+Une fois les points clés du visage détectés, il est possible de connaitre leur profondeur de façon rapide. Certains points tels que le bout du nez peuvent être détectés de face ou de profil, on obtient donc une méthode de détection bien plus précise. On peut alors implémenter une méthode de tracking telle qu’explicitée dans la partie 5.
+
 ## 7) Détection du squelette humain grâce à OpenPose
+
+Nous avons ensuite tenté de détecter un corps humain grâce à OpenPose, ceci dans le but de pouvoir commander le robot avec une gestuelle, par exemple un levé de bras lui commanderai l’action d’avancer, montrer un autre visage sur l’image permettrait de passer le visage désigné en tant que visage maitre pour le tracking, etc…
+
+Un but secondaire aurait été d’optimiser le tracking en suivant une partie du corps également, de sorte que si un visage est de profil et n’est plus détecté avec notre méthode, le robot n’est pas perdu et sait que la personne à suivre est toujours là, bien qu’on ne capte plus son visage.
 
 ![picture](Assets/Squelette.jpg)
 
