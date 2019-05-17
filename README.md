@@ -35,9 +35,13 @@ python nomDuProgramme.py
 ## 2) Détection d'images à partir de la librealsense2
 
 Avec   la   caméra   Intel   Realsense   Depth   camera   D435, nous avons les caractéristiques suivantes:
+
 Depth technology: Active IR Stereo
+
 Minimum Depth Distance (Min-Z): 0.105 m
+
 Depth Field of View (FOV): 87°+-3° x 58°+-1° x 95°+-3°
+
 Depth Output Resolution & frame rate: Up to 1280x720 active stereo depth resolution. Up to 90 fps (frames per second).
 
 La  récupération  des  données  de  la  caméra  RealSense  D435  dans  un  programme  python  est réalisée grâce à la librairie librealsense2. Elle permet notamment d’afficher les flux d’images couleur  et de  profondeur  grâce  à  un  stream  et  de  renvoyer  le  tableau des profondeurs associées aux différentes images.
@@ -83,7 +87,9 @@ if ((x1 & x2) < 640) &  ((y1 & y2) < 480):
 	print(depth_centre)
 ```
 Ce modèle a cependant des limites:
+
 Le visage doit être de face par rapport a la caméra (Les visages de profil sont mal détectés).
+
 La luminosité environnante doit être suffisante.
 
 ### Méthode 2:
